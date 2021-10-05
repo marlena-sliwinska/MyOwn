@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { StoreContext } from '../../../store/StoreProvider'
 import List from '../List/List';
 
@@ -7,7 +7,6 @@ function ListWrapper() {
     const renderList = lists.map(list => <List key={list.id} {...list} />)
     return (
         <ul>
-            Dlaczego
             {renderList}
         </ul>
     )
