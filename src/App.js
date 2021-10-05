@@ -1,23 +1,22 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from './components/Header/Header'
-import ListForm from './components/ToDo/ListForm/ListForm';
-import ListWrapper from './components/ToDo/LIstWrapper/ListWrapper';
+import Homepage from './views/Homepage/Homepage';
+import ToDo from './views/ToDo/ToDo';
+import Pomodoro from './views/Pomodoro/Pomodoro';
 import './App.css';
 
 function App() {
 
-
   return (
     <div>
-      <Header />
+
       <Router>
+        <Header />
         <Switch>
-          <Route
-            /* exact */
-            path="/" render={() => <div>STRONA GŁÓWNA</div>} />
-          <Route path="/lists" component={ListWrapper} />
-          <Route path="/listform" component={ListForm} />
+          <Route exact path="/" component={Homepage} />
+          <Route path="/todo" component={ToDo} />
+          <Route path="/timer" component={Pomodoro} />
           <Route render={() => <div>something went wrong</div>} />
         </Switch>
       </Router>

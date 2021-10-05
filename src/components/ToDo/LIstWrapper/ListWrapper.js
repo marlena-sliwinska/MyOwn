@@ -7,6 +7,7 @@ function ListWrapper() {
     const renderList = lists.map(list => <List key={list.id} {...list} />)
     return (
         <ul>
+            Dlaczego
             {renderList}
         </ul>
     )
