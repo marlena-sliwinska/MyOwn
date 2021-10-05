@@ -1,6 +1,10 @@
+import React, { useContext, useEffect } from 'react';
+import { StoreContext } from './store/StoreProvider';
 import './App.css';
 
 function App() {
+  const { user } = useContext(StoreContext)
+
   return (
     <div>
       <header>
@@ -10,6 +14,7 @@ function App() {
 
           </ul>
         </nav>
+        <p>Witaj {user.name}! </p>
       </header>
     </div>
   );

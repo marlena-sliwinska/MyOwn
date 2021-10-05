@@ -1,11 +1,11 @@
 import React from 'react'
 import App from './App'
-
+import StoreProvider from './store/StoreProvider'
 function Root() {
     return (
-        <div>
+        <StoreProvider>
             <App />
-        </div>
+        </StoreProvider>
     )
 }
 
