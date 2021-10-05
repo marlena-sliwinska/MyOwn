@@ -1,25 +1,26 @@
-import React, { useContext, useEffect } from 'react';
-import { StoreContext } from './store/StoreProvider';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Header from './components/Header/Header'
+import ListForm from './components/ToDo/ListForm/ListForm';
 import ListWrapper from './components/ToDo/LIstWrapper/ListWrapper';
 import './App.css';
-import ListForm from './components/ToDo/ListForm/ListForm';
 
 function App() {
-  const { user } = useContext(StoreContext)
+
 
   return (
     <div>
-      <header>
-        <h1>LOGO</h1>
-        <nav>
-          <ul>
-
-          </ul>
-        </nav>
-        <p>Witaj {user.name}! </p>
-      </header>
-      <ListWrapper />
-      <ListForm />
+      <Header />
+      <Router>
+        <Switch>
+          <Route
+            /* exact */
+            path="/" render={() => <div>STRONA GŁÓWNA</div>} />
+          <Route path="/lists" component={ListWrapper} />
+          <Route path="/listform" component={ListForm} />
+          <Route render={() => <div>something went wrong</div>} />
+        </Switch>
+      </Router>
     </div>
   );
 }
