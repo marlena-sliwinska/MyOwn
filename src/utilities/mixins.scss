@@ -1,0 +1,39 @@
+@import './variables.scss';
+
+@mixin BasicBorderRadius {  
+    border-radius: 8px;
+}
+@mixin BasicMargin {
+    margin: 0.2rem 15px;
+}
+@mixin BasicPadding {
+    padding: 0.5rem;
+}
+@mixin Input {
+    font-size: 18px;
+    font-weight: 300;
+    border-radius: 8px;
+    height: 36px;
+    background-color: $inputBackgroundColor;
+    color: $inputTextColor;
+    width: 60vw;
+    padding-left: 16px;
+  }
+ 
+  @mixin Wrapper {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+  }
+  
+  @mixin ButtonTask {
+    width: 128px;
+    height: 36px;
+    font-size: 24px;
+  }
+  @mixin ButtonList {
+    width: 189px;
+    height: 56px;
+    font-size: 32px;
+    line-height: 56px;
+  }

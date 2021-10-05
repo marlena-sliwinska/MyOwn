@@ -1,10 +1,28 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { StoreContext } from '../../../store/StoreProvider'
+import styles from './List.module.scss'
 
-function List({ title }) {
+function List({ title, id }) {
+    const { handleOpenList } = useContext(StoreContext)
     return (
-        <div>
-            {title}
-        </div>
+        <li className={styles.wrapper}>
+
+            <article  >
+                <h2 className={styles.title}>{title}</h2>
+                <button
+                    className={styles.open}
+                    onClick={() => handleOpenList(id)}
+                >open</button>
+                <details>
+                    <summary>
+                        details
+                    </summary>
+                    <p> Created at:</p>
+                    <p> Last update at:</p>
+                    <p> Completition: </p>
+                </details>
+            </article>
+        </li>
     )
 }
 

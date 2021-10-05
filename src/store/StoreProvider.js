@@ -10,27 +10,36 @@ function StoreProvider({ children }) {
     const [lists, dispatch] = useReducer(listsReducers, [
         {
             title: 'Zostać frontend developerem',
-            id: 45645645,
+            id: 666,
             tasks: [
-                { id: 456645, content: "do końca października opanuje hooki" },
+                { id: 45, content: "do końca października opanuje hooki" },
                 { id: 456, content: "w listopadzie pierwsze dwa tygodnie poświece na gita" }
             ]
         },
         {
             title: 'Zrobić hanumasane',
-            id: 45645654,
+            id: 7878,
             tasks: [
-                { id: 544645, content: "opświecać 30 minut dziennie na rozciąganie" },
-                { id: 645, content: "poczytać o pozycji w Anatomi jogi" }
+                { id: 55, content: "opświecać 30 minut dziennie na rozciąganie" },
+                { id: 6969, content: "poczytać o pozycji w Anatomi jogi" }
             ]
         }
     ])
+    const [openedList, setOpenedList] = useState(null)
+
+    const handleOpenList = (id) => {
+        if (id) setOpenedList(id)
+        else console.log("otwórz nową listę")
+        /* setOpenedList */
+    }
     return (
         <StoreContext.Provider value={{
             user,
             setUser,
             lists,
-            dispatch
+            dispatch,
+            openedList,
+            handleOpenList
         }} >
             {children}
         </ StoreContext.Provider>

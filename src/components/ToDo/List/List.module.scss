@@ -1,0 +1,30 @@
+@import './../../../utilities/mixins.scss';
+
+.wrapper{
+   color: white;
+   background-color: rgb(7, 17, 7);
+   min-height: 1.5rem;
+   list-style-type: none;
+   @include BasicBorderRadius;
+   @include BasicPadding;
+   @include BasicMargin;
+
+}
+
+.wrapper details {
+   max-width: fit-content;
+}
+.wrapper summary, p {
+   font-size: 0.9rem;
+   font-weight: 300;
+}
+
+.title {
+   text-transform: uppercase;
+   font-size: 1.2rem;
+   display: inline-block;
+}
+
+.open {
+ 
+}
