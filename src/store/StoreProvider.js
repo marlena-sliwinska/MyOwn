@@ -1,5 +1,5 @@
-import React, { createContext, useState } from 'react'
-
+import React, { createContext, useReducer, useState } from 'react'
+import { listsReducers } from './ListsReducers'
 //import data from axios library
 export const StoreContext = createContext(null)
 
@@ -7,7 +7,7 @@ function StoreProvider({ children }) {
     const [user, setUser] = useState({
         name: 'Marlena',
     })
-    const [lists, setLists] = useState([
+    const [lists, dispatch] = useReducer(listsReducers, [
         {
             title: 'Zostać frontend developerem',
             id: 45645645,
