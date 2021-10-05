@@ -1,11 +1,10 @@
 import { ADD_LIST, EDIT_LIST, REMOVE_LIST } from "./ListsActions"
 
 export const listsReducers = (state, action) => {
+
     switch (action.type) {
-        case ADD_LIST: {
-            console.log(ADD_LIST)
-            return;
-        }
+        case ADD_LIST:
+            return [...state, action.payload];
         case EDIT_LIST: {
             console.log(EDIT_LIST)
             return;

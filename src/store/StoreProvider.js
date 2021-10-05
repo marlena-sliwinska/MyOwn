@@ -28,7 +28,9 @@ function StoreProvider({ children }) {
     return (
         <StoreContext.Provider value={{
             user,
-            setUser
+            setUser,
+            lists,
+            dispatch
         }} >
             {children}
         </ StoreContext.Provider>
