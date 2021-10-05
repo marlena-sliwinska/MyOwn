@@ -1,47 +1,68 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { StoreContext } from '../../../store/StoreProvider'
-import { addList } from '../../../store/ListsActions'
+import { addList, editList } from '../../../store/ListsActions'
 import Task from '../Task/Task'
-function ListForm(
-    id = null,
-) {
+import TaskForm from '../../TaskForm/TaskForm'
+function ListForm({ id = null, }) {
     const { lists, dispatch } = useContext(StoreContext)
-    const [title, setTitle] = useState("")
+    const [title, setTitle] = useState('')
     const [tasks, setTasks] = useState([])
     const handleTitleChange = e => setTitle(e.target.value)
-    const handleAddNewNote = e => {
+    const handleSaveNote = e => {
         e.preventDefault()
-        const newList = {
-            title,
-            tasks: [
-            ]
+        if (id) {
+            const editedList = {
+                title,
+                id,
+                tasks
+            }
+            dispatch(editList(editedList))
+        } else {
+            const newList = {
+                title,
+                tasks: [
+                ]
+            }
+            dispatch(addList(newList))
         }
-        dispatch(addList(newList))
-
     }
+
     useEffect(() => {
+
         findEditedList(id)
         //dodaj clean up function
     }, [id])
-    const findEditedList = ({ id }) => {
+    const handleAddNewTask = (newTask) => {
+        setTasks(prev => ([...prev, newTask]))
+    }
+    const handleRemoveOneTask = (taskId) => {
+        setTasks(tasks.filter(task => task.id !== taskId))
+    }
+    const findEditedList = (id) => {
+
+        //dlaczego tu jest obiekt
         if (id === null) return
         let editedListIndex
         lists.forEach((list, index) => {
             if (list.id === id) editedListIndex = index
         })
         setTasks(lists[editedListIndex].tasks)
+        setTitle(lists[editedListIndex].title)
     }
+
     const renderTasks = tasks.map(task => (
-        <Task key={task.id} content={task.content} />
+        <Task key={task.id} {...task} deleteTask={handleRemoveOneTask} />
     ))
-    console.log("tasks", tasks)
     return (
-        <form onSubmit={handleAddNewNote}>
+        <form onSubmit={handleSaveNote}>
             <label> Tytuł notatki
                 <input value={title} onChange={handleTitleChange} />
             </label>
-            <button>add list</button>
+
+            <TaskForm add={handleAddNewTask} />
             {renderTasks}
+            {/* <button>cancel</button> */}
+            <button type="submit">{id ? "save changes" : "save list"}</button>
         </form>
     )
 }

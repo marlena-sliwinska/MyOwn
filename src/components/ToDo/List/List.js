@@ -3,7 +3,7 @@ import { StoreContext } from '../../../store/StoreProvider'
 import styles from './List.module.scss'
 
 function List({ title, id }) {
-    const { handleOpenList } = useContext(StoreContext)
+    const { setOpenedList } = useContext(StoreContext)
     return (
         <li className={styles.wrapper}>
 
@@ -11,7 +11,7 @@ function List({ title, id }) {
                 <h2 className={styles.title}>{title}</h2>
                 <button
                     className={styles.open}
-                    onClick={() => handleOpenList(id)}
+                    onClick={() => setOpenedList(id)}
                 >open</button>
                 <details>
                     <summary>

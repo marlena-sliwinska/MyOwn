@@ -26,12 +26,8 @@ function StoreProvider({ children }) {
         }
     ])
     const [openedList, setOpenedList] = useState(null)
+    const [createNewList, setCreateNewList] = useState(false)
 
-    const handleOpenList = (id) => {
-        if (id) setOpenedList(id)
-        else console.log("otwórz nową listę")
-        /* setOpenedList */
-    }
     return (
         <StoreContext.Provider value={{
             user,
@@ -39,7 +35,9 @@ function StoreProvider({ children }) {
             lists,
             dispatch,
             openedList,
-            handleOpenList
+            setOpenedList,
+            createNewList,
+            setCreateNewList
         }} >
             {children}
         </ StoreContext.Provider>

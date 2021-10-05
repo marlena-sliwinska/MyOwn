@@ -7,22 +7,22 @@ export const REMOVE_LIST = 'removeList'
 export const addList = ({ tasks, title }) => ({
     type: ADD_LIST,
     payload: {
-        listId: uuidv4(),
+        id: uuidv4(),
         title,
         tasks,
     }
 })
-export const removeList = ({ listId }) => ({
+export const removeList = ({ id }) => ({
     type: REMOVE_LIST,
     payload: {
-        listId
+        id
     }
 })
-export const editList = ({ listId, tasks, title }) => ({
+export const editList = ({ id, tasks, title }) => ({
     type: EDIT_LIST,
     payload: {
         title,
         tasks,
-        listId
+        id
     }
 })
