@@ -6,34 +6,39 @@ import styles from './Header.module.scss'
 function Header() {
     const { user } = useContext(StoreContext)
     return (
-        <header className={styles}>
-            <h1>LOGO</h1>
-            <nav>
-                <ul>
-                    <li>
-                        <NavLink
-                            to="/"
-                            activeClassName={styles.active}
-                            exact
-                        >Strona Główna</NavLink>
-                    </li>
-                    <li>
-                        <NavLink
-                            to="/todo"
-                            activeClassName={styles.active}
-                            exact
-                        >ToDo's</NavLink>
-                    </li>
-                    {/*       <li>
+        <header className={styles.wrapper}>
+            <h1 className={styles.logo}>My own</h1>
+            <div className={styles.header}>
+                <nav className={styles.nav}>
+                    <ul>
+                        <li className={styles.item}>
+                            <NavLink
+                                to="/"
+                                className={styles.link}
+                                activeClassName={styles.linkIsActive}
+                                exact
+                            >Strona Główna</NavLink>
+                        </li>
+                        <li className={styles.item}>
+                            <NavLink
+                                to="/todo"
+                                className={styles.link}
+                                activeClassName={styles.linkIsActive}
+                                exact
+                            >ToDo's</NavLink>
+                        </li>
+                        {/*       <li className={styles.item}>
                         <NavLink
                             to="/timer"
-                            activeClassName={styles.active}
+                            className={styles.link}
+                            activeClassName={styles.linkIsActive}
                             exact
                         >Pomodoro</NavLink>
                     </li> */}
-                </ul>
-            </nav>
-            <p>Witaj {user.name}! </p>
+                    </ul>
+                </nav>
+                <p className={styles.user}>Witaj {user.name}! </p>
+            </div>
         </header>
     )
 }

@@ -1,3 +1,39 @@
-.active {
-    color: rgb(4, 46, 4);
+@import './../../utilities/variables.scss';
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    align-items: center;
+    position:sticky;
+    top: 0;
+    background-color: whitesmoke;
+    
+ }
+.header {
+    display: flex;
+  
+}
+.logo {
+    color: darken($majorToDoColor, $amount: 20);
+    margin-left: 15px;
+}
+.item {
+    min-width: 80px;
+    margin-left: 15px;
+    list-style-type: none;
+    display: inline-block;
+}
+.link {
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+    &IsActive{
+        color: $majorToDoColor;
+        font-weight: 700;
+        transition: all 0.3s;
+    }
+   }
+.user {
+    margin-right: 15px;
 }

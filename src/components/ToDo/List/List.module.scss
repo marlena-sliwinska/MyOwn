@@ -1,13 +1,16 @@
 @import './../../../utilities/mixins.scss';
+@import './../../../utilities/variables.scss';
 
 .wrapper{
    color: white;
-   background-color: rgb(7, 17, 7);
+   background-color: black;
    min-height: 1.5rem;
    list-style-type: none;
    @include BasicBorderRadius;
    @include BasicPadding;
-   @include BasicMargin;
+   margin: 10px 15px
+  
+
 
 }
 

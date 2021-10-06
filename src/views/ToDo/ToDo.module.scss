@@ -1,0 +1,27 @@
+@import './../../utilities/variables.scss';
+@import './../../utilities/mixins.scss';
+.content {
+   margin: 30px 15px;
+   min-height: 100vh;
+   max-height: 100%;
+}
+
+.header {
+    width: fit-content;
+    margin: auto;
+    color: $textBasicColor;
+    padding: 20px 30px;
+  /*   background-color: $majorToDoColor;; */
+    border-radius: 5%;
+    box-shadow: inset 0px 0px 14px 8px $majorToDoColor;
+    margin-bottom: 15px;
+}
+
+.button {
+    @include ButtonList;
+    @extend .header;
+    background: none;
+    padding: 0.5em;
+   /*  position: sticky; */
+    /* bottom: 15px; */
+}

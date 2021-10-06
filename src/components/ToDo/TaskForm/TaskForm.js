@@ -11,7 +11,8 @@ function TaskForm({ content = "", add }) {
         e.preventDefault();
         const newTask = {
             content: taskInput,
-            id: uuidv4()
+            id: uuidv4(),
+            isDone: false,
         }
         add(newTask)
         setTaskInput("")
