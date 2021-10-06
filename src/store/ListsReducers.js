@@ -11,10 +11,8 @@ export const listsReducers = (state, action) => {
                 else
                     return list
             });
-        case REMOVE_LIST: {
-            console.log(REMOVE_LIST)
-            return;
-        }
+        case REMOVE_LIST:
+            return state.filter(list => list.id !== action.payload.id);
         default:
             return state;
     }

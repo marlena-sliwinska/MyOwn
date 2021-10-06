@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { StoreContext } from '../../../store/StoreProvider'
-import { addList, editList } from '../../../store/ListsActions'
+import { addList, editList, removeList } from '../../../store/ListsActions'
 import Portal from '../../Portal/Portal'
 import Task from '../Task/Task'
 import TaskForm from '../TaskForm/TaskForm'
@@ -11,6 +11,16 @@ function ListForm({ id = null, }) {
     const [title, setTitle] = useState('')
     const [tasks, setTasks] = useState([])
     const handleTitleChange = e => setTitle(e.target.value)
+    const handleDeleteNote = e => {
+        e.preventDefault()
+        dispatch(removeList({ id }))
+        setOpenedList(null)
+    }
+    const handleCancelNote = e => {
+        e.preventDefault()
+        setOpenedList(null)
+        setCreateNewList(false)
+    }
     const handleSaveNote = e => {
         e.preventDefault()
         if (id) {
@@ -76,10 +86,21 @@ function ListForm({ id = null, }) {
                 {renderTasks}
                 <TaskForm add={handleAddNewTask} />
 
-                {/* <button>cancel</button> */}
+                {id ? <button
+                    onClick={handleDeleteNote}
+                    className={styles.button}>
+                    Delete List
+                </button> : null}
+                <button
+                    onClick={handleCancelNote}
+                    className={styles.button}>
+                    Cancel
+                </button>
                 <button
                     className={styles.button}
-                    type="submit">{id ? "Save changes" : "Save list"}</button>
+                    type="submit">
+                    {id ? "Save changes" : "Save list"}
+                </button>
             </form>
 
         </Portal>
