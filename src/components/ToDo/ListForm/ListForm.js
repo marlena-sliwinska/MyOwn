@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { StoreContext } from '../../../store/StoreProvider'
 import { addList, editList } from '../../../store/ListsActions'
+import Portal from '../../Portal/Portal'
 import Task from '../Task/Task'
-import TaskForm from '../../TaskForm/TaskForm'
+import TaskForm from '../TaskForm/TaskForm'
+
 function ListForm({ id = null, }) {
-    const { lists, dispatch } = useContext(StoreContext)
+    const { lists, dispatch, setOpenedList, setCreateNewList } = useContext(StoreContext)
     const [title, setTitle] = useState('')
     const [tasks, setTasks] = useState([])
     const handleTitleChange = e => setTitle(e.target.value)
@@ -17,6 +19,7 @@ function ListForm({ id = null, }) {
                 tasks
             }
             dispatch(editList(editedList))
+            setOpenedList(null)
         } else {
             const newList = {
                 title,
@@ -24,6 +27,7 @@ function ListForm({ id = null, }) {
                 ]
             }
             dispatch(addList(newList))
+            setCreateNewList(false)
         }
     }
 
@@ -54,16 +58,20 @@ function ListForm({ id = null, }) {
         <Task key={task.id} {...task} deleteTask={handleRemoveOneTask} />
     ))
     return (
-        <form onSubmit={handleSaveNote}>
-            <label> Tytuł notatki
-                <input value={title} onChange={handleTitleChange} />
-            </label>
+        <Portal>
 
-            <TaskForm add={handleAddNewTask} />
-            {renderTasks}
-            {/* <button>cancel</button> */}
-            <button type="submit">{id ? "save changes" : "save list"}</button>
-        </form>
+            <form onSubmit={handleSaveNote} method="dialog">
+                <label> Tytuł notatki
+                    <input value={title} onChange={handleTitleChange} />
+                </label>
+
+                <TaskForm add={handleAddNewTask} />
+                {renderTasks}
+                {/* <button>cancel</button> */}
+                <button type="submit">{id ? "save changes" : "save list"}</button>
+            </form>
+
+        </Portal>
     )
 }
 
