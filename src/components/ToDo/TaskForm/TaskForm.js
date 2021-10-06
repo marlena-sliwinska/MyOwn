@@ -19,9 +19,11 @@ function TaskForm({ content = "", add }) {
     return (
         <>
             <article className={styles.wrapper}>
-                <label className={styles.label}>New task:
-                    <br />
-                    <input className={styles.input}
+                <label >
+                    <input
+                        placeholder="new task..."
+                        type="text"
+                        className={styles.input}
                         value={taskInput}
                         onChange={handleChange}
                     />

@@ -1,9 +1,14 @@
+@import './../../utilities/variables.scss';
+
 .modal {
-    background-color: red;
+    background-color: $PortalBackgroundColor;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-
+    height: 90vh;
+    width: 1750px;
+    max-width: 90vw;
+    overflow: auto;
 }
 

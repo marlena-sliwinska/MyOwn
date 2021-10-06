@@ -16,7 +16,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Homepage} />
           <Route path="/todo" component={ToDo} />
-          <Route path="/timer" component={Pomodoro} />
+          {/*  <Route path="/timer" component={Pomodoro} /> */}
           <Route render={() => <div>something went wrong</div>} />
         </Switch>
       </Router>

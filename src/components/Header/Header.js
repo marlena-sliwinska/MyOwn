@@ -24,13 +24,13 @@ function Header() {
                             exact
                         >ToDo's</NavLink>
                     </li>
-                    <li>
+                    {/*       <li>
                         <NavLink
                             to="/timer"
                             activeClassName={styles.active}
                             exact
                         >Pomodoro</NavLink>
-                    </li>
+                    </li> */}
                 </ul>
             </nav>
             <p>Witaj {user.name}! </p>

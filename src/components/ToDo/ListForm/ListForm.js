@@ -4,6 +4,7 @@ import { addList, editList } from '../../../store/ListsActions'
 import Portal from '../../Portal/Portal'
 import Task from '../Task/Task'
 import TaskForm from '../TaskForm/TaskForm'
+import styles from './ListForm.module.scss'
 
 function ListForm({ id = null, }) {
     const { lists, dispatch, setOpenedList, setCreateNewList } = useContext(StoreContext)
@@ -60,15 +61,25 @@ function ListForm({ id = null, }) {
     return (
         <Portal>
 
-            <form onSubmit={handleSaveNote} method="dialog">
-                <label> Tytuł notatki
-                    <input value={title} onChange={handleTitleChange} />
+            <form
+                onSubmit={handleSaveNote}
+                className={styles.wrapper}
+            >
+                <label>
+                    <input
+                        className={styles.input}
+                        type="text"
+                        placeholder="title note"
+                        value={title}
+                        onChange={handleTitleChange} />
                 </label>
-
-                <TaskForm add={handleAddNewTask} />
                 {renderTasks}
+                <TaskForm add={handleAddNewTask} />
+
                 {/* <button>cancel</button> */}
-                <button type="submit">{id ? "save changes" : "save list"}</button>
+                <button
+                    className={styles.button}
+                    type="submit">{id ? "Save changes" : "Save list"}</button>
             </form>
 
         </Portal>

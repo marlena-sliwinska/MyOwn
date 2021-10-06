@@ -18,6 +18,9 @@
     color: $inputTextColor;
     width: 60vw;
     padding-left: 16px;
+    outline: none;
+ 
+ 
   }
  
   @mixin Wrapper {
@@ -27,13 +30,18 @@
   }
   
   @mixin ButtonTask {
-    width: 128px;
-    height: 36px;
-    font-size: 24px;
+    margin-left: 1em;
+    padding: 0.5em 1em;
+    font-size: 16px;
+    color: $textButtonColor;
+    background-color: $majorToDoColor;
+    border: none;
   }
   @mixin ButtonList {
-    width: 189px;
-    height: 56px;
-    font-size: 32px;
-    line-height: 56px;
+    min-width: fit-content;
+    font-size: 24px;
+    @include BasicPadding;
+    margin-top: 2rem;
+    border: none;
+    
   }
