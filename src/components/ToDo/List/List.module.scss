@@ -3,15 +3,20 @@
 
 .wrapper{
    color: white;
-   background-color: black;
+   background-color: rgb(19, 19, 20);
    min-height: 1.5rem;
    list-style-type: none;
    @include BasicBorderRadius;
-   @include BasicPadding;
-   margin: 10px 15px
-  
+
+   margin: 10px 15px;
+   color: lighten($majorToDoColor, $amount: 25);
+   padding: 1.5rem 0.7rem  1.5rem  1.5rem ;
 
 
+}
+.item {
+   display: flex;
+   justify-content: space-between;
 }
 
 .wrapper details {
@@ -20,14 +25,20 @@
 .wrapper summary, p {
    font-size: 0.9rem;
    font-weight: 300;
+   font-style: italic;
+
 }
 
 .title {
    text-transform: uppercase;
    font-size: 1.2rem;
    display: inline-block;
+   margin-bottom: 0.5rem
 }
 
 .open {
- 
+ @include ButtonTask;
+ height: fit-content;
+   @include BasicBorderRadius
+
 }

@@ -7,20 +7,22 @@ function List({ title, id }) {
     return (
         <li className={styles.wrapper}>
 
-            <article  >
-                <h2 className={styles.title}>{title}</h2>
+            <article className={styles.item}>
+                <div className={styles.itemContainer}>
+                    <h2 className={styles.title}>{title}</h2>
+                    <details>
+                        <summary>
+                            details
+                        </summary>
+                        <p> Created at:</p>
+                        <p> Last update at:</p>
+                        <p> Completition: </p>
+                    </details>
+                </div>
                 <button
                     className={styles.open}
                     onClick={() => setOpenedList(id)}
                 >open</button>
-                <details>
-                    <summary>
-                        details
-                    </summary>
-                    <p> Created at:</p>
-                    <p> Last update at:</p>
-                    <p> Completition: </p>
-                </details>
             </article>
         </li>
     )
