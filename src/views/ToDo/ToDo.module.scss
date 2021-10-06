@@ -1,9 +1,15 @@
 @import './../../utilities/variables.scss';
 @import './../../utilities/mixins.scss';
+
 .content {
    margin: 30px 15px;
-   min-height: 100vh;
-   max-height: 100%;
+   &Deactive {
+    overflow: hidden;
+    filter: blur(10px);
+    background-color: black;
+/*     max-height: 70vh;
+    overflow: auto; */
+}
 }
 
 .header {
@@ -21,7 +27,13 @@
     @include ButtonList;
     @extend .header;
     background: none;
-    padding: 0.5em;
-   /*  position: sticky; */
+    font-size: 1.2rem;
+    padding: 0.7em;
+    position: relative;
+    width: 150px;
+    left: 100%;
+    transform: translateX(-125%);
+    /* position: absolute;  */
     /* bottom: 15px; */
 }
+

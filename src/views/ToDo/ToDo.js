@@ -7,16 +7,19 @@ const ListWrapper = React.lazy(() => import('../../components/ToDo/ListWrapper/L
 
 function ToDo() {
     const { openedList, createNewList, setCreateNewList } = useContext(StoreContext)
+    // zastap to biblioteka classname
+
     return (
-        <div className={styles.content}>
+        <div className={openedList || createNewList ? styles.contentDeactive : styles.content}>
             <h2
                 className={styles.header}
-            >ToDo</h2>
+            >To Do</h2>
 
             <Suspense fallback={<div>...loading</div>}>
                 <ListWrapper />
             </Suspense>
             <button
+                disabled={openedList || createNewList}
                 className={styles.button}
                 onClick={() => setCreateNewList(true)}>Add new note</button>
             {openedList && <ListForm id={openedList} />}

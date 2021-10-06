@@ -28,8 +28,40 @@ function StoreProvider({ children }) {
             title: 'Zrobić obiad',
             id: 45654654654621321,
             tasks: [
-                { id: 456455, content: "kupic buraki" },
-                { id: 6969, content: "upiec jabłka" }
+                { id: 456455, content: "kupic buraki", isDone: false },
+                { id: 6969, content: "upiec jabłka", isDone: false }
+            ]
+        },
+        {
+            title: 'Zrobić obiad',
+            id: 45654654654621321,
+            tasks: [
+                { id: 456455, content: "kupic buraki", isDone: false },
+                { id: 6969, content: "upiec jabłka", isDone: false }
+            ]
+        },
+        {
+            title: 'Zrobić obiad',
+            id: 45654654654621321,
+            tasks: [
+                { id: 456455, content: "kupic buraki", isDone: false },
+                { id: 6969, content: "upiec jabłka", isDone: false }
+            ]
+        },
+        {
+            title: 'Zrobić obiad',
+            id: 45654654654621321,
+            tasks: [
+                { id: 456455, content: "kupic buraki", isDone: false },
+                { id: 6969, content: "upiec jabłka", isDone: false }
+            ]
+        },
+        {
+            title: 'Zrobić obiad',
+            id: 45654654654621321,
+            tasks: [
+                { id: 456455, content: "kupic buraki", isDone: false },
+                { id: 6969, content: "upiec jabłka", isDone: false }
             ]
         },
     ])

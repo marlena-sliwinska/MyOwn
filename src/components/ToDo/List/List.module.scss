@@ -21,12 +21,17 @@
 
 .wrapper details {
    max-width: fit-content;
+   
 }
 .wrapper summary, p {
    font-size: 0.9rem;
    font-weight: 300;
    font-style: italic;
+  
 
+}
+.wrapper summary {
+   cursor: pointer;
 }
 
 .title {
@@ -39,6 +44,7 @@
 .open {
  @include ButtonTask;
  height: fit-content;
-   @include BasicBorderRadius
+ @include BasicBorderRadius;
+
 
 }
