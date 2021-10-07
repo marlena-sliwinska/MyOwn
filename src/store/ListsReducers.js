@@ -7,7 +7,13 @@ export const listsReducers = (state, action) => {
             return [...state, action.payload];
         case EDIT_LIST:
             return state.map(list => {
-                if (list.id === action.payload.id) { return action.payload }
+                if (list.id === action.payload.id) {
+
+                    return {
+                        ...action.payload,
+                        created: list.created
+                    }
+                }
                 else
                     return list
             });

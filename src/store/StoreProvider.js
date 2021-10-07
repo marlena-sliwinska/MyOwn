@@ -1,3 +1,4 @@
+import { getCurrentDate } from './ListsActions'
 import React, { createContext, useReducer, useState } from 'react'
 import { listsReducers } from './ListsReducers'
 //import data from axios library
@@ -14,7 +15,9 @@ function StoreProvider({ children }) {
             tasks: [
                 { id: 45, content: "do końca października opanuje hooki", isDone: false },
                 { id: 456, content: "w listopadzie pierwsze dwa tygodnie poświece na gita", isDone: true }
-            ]
+            ],
+            created: getCurrentDate(),
+            updated: getCurrentDate(),
         },
         {
             title: 'Zrobić hanumasane',
@@ -22,7 +25,9 @@ function StoreProvider({ children }) {
             tasks: [
                 { id: 55, content: "opświecać 30 minut dziennie na rozciąganie", isDone: false },
                 { id: 12, content: "poczytać o pozycji w Anatomi jogi", isDone: true },
-            ]
+            ],
+            created: getCurrentDate(),
+            updated: getCurrentDate(),
         },
         {
             title: 'Zrobić obiad',
@@ -30,7 +35,9 @@ function StoreProvider({ children }) {
             tasks: [
                 { id: 456455, content: "kupic buraki", isDone: false },
                 { id: 6969, content: "upiec jabłka", isDone: false }
-            ]
+            ],
+            created: getCurrentDate(),
+            updated: getCurrentDate(),
         },
 
     ])

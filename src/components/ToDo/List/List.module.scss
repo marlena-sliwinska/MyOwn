@@ -19,15 +19,12 @@
    justify-content: space-between;
 }
 
-.wrapper details {
-   max-width: fit-content;
-   
-}
+
 .wrapper summary, p {
    font-size: 0.9rem;
    font-weight: 300;
    font-style: italic;
-  
+   min-width: fit-content;
 
 }
 .wrapper summary {

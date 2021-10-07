@@ -30,7 +30,7 @@ function ListForm({ id = null, }) {
             const editedList = {
                 title,
                 id,
-                tasks
+                tasks,
             }
             dispatch(editList(editedList))
             setOpenedList(null)

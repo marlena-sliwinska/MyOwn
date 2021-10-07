@@ -1,8 +1,15 @@
+
 import { v4 as uuidv4 } from 'uuid';
+
 
 export const ADD_LIST = 'addList'
 export const EDIT_LIST = 'editList'
 export const REMOVE_LIST = 'removeList'
+
+export const getCurrentDate = () => {
+    const time = new Date().toLocaleString()
+    return time
+}
 
 export const addList = ({ tasks, title }) => ({
     type: ADD_LIST,
@@ -10,6 +17,8 @@ export const addList = ({ tasks, title }) => ({
         id: uuidv4(),
         title,
         tasks,
+        created: getCurrentDate(),
+        updated: getCurrentDate(),
     }
 })
 export const removeList = ({ id }) => ({
@@ -23,6 +32,7 @@ export const editList = ({ id, tasks, title }) => ({
     payload: {
         title,
         tasks,
-        id
+        id,
+        updated: getCurrentDate(),
     }
 })
