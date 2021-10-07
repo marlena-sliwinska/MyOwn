@@ -44,8 +44,7 @@ function ListForm({ id = null, }) {
             } else {
                 const newList = {
                     title,
-                    tasks: [
-                    ]
+                    tasks
                 }
                 dispatch(addList(newList))
                 setCreateNewList(false)
