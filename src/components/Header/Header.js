@@ -37,7 +37,7 @@ function Header() {
                     </li> */}
                     </ul>
                 </nav>
-                <p className={styles.user}>Welcome {user.name}! </p>
+                <p className={styles.user}>Welcome {user.name} ! </p>
             </div>
         </header>
     )

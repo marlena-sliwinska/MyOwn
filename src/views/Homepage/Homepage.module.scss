@@ -1,0 +1,28 @@
+@import './../../utilities/variables.scss';
+
+.wrapper {
+ margin: 50px;
+/*  font-size: 1rem;
+ */ color: $majorToDoColor;
+}
+
+.link {
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+
+.header {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.bar {
+    margin-top: 50px;
+    margin-bottom: 15px;
+}
+
+.motivation {
+    font-weight: 300;
+}
