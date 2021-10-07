@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { StoreContext } from '../../../store/StoreProvider'
 import { addList, editList, removeList } from '../../../store/ListsActions'
+import { titleValidationFn, titleErrorMessage } from './Validation'
+
 import Portal from '../../Portal/Portal'
 import Task from '../Task/Task'
 import TaskForm from '../TaskForm/TaskForm'
@@ -11,9 +13,13 @@ function ListForm({ id = null, }) {
     const { lists, dispatch, setOpenedList, setCreateNewList } = useContext(StoreContext)
     const [title, setTitle] = useState('')
     const [tasks, setTasks] = useState([])
+    const [titleValidation, setTitleValidation] = useState(null)
 
 
-    const handleTitleChange = e => setTitle(e.target.value)
+    const handleTitleChange = e => {
+        setTitle(e.target.value)
+        setTitleValidation(false)
+    }
     const handleDeleteNote = e => {
         e.preventDefault()
         dispatch(removeList({ id }))
@@ -26,23 +32,25 @@ function ListForm({ id = null, }) {
     }
     const handleSaveNote = e => {
         e.preventDefault()
-        if (id) {
-            const editedList = {
-                title,
-                id,
-                tasks,
+        if (titleValidationFn(title)) {
+            if (id) {
+                const editedList = {
+                    title,
+                    id,
+                    tasks,
+                }
+                dispatch(editList(editedList))
+                setOpenedList(null)
+            } else {
+                const newList = {
+                    title,
+                    tasks: [
+                    ]
+                }
+                dispatch(addList(newList))
+                setCreateNewList(false)
             }
-            dispatch(editList(editedList))
-            setOpenedList(null)
-        } else {
-            const newList = {
-                title,
-                tasks: [
-                ]
-            }
-            dispatch(addList(newList))
-            setCreateNewList(false)
-        }
+        } else setTitleValidation(true)
     }
 
 
@@ -99,6 +107,11 @@ function ListForm({ id = null, }) {
         button: true,
         buttonDelete: true
     });
+
+    let classNameInput = cx({
+        input: true,
+        inputError: titleValidation,
+    });
     return (
         <Portal>
 
@@ -109,11 +122,14 @@ function ListForm({ id = null, }) {
                 <p className={styles.title}>
                     <label>
                         <input
-                            className={styles.input}
+                            className={classNameInput}
                             type="text"
-                            placeholder="title note"
                             value={title}
-                            onChange={handleTitleChange} />
+                            onChange={handleTitleChange}
+                            placeholder={titleValidation ?
+                                titleErrorMessage : "title note"}
+
+                        />
                     </label>
                 </p>
                 <div className={styles.bar}></div>

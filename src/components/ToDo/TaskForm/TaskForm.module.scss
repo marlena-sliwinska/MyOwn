@@ -8,7 +8,10 @@ $width: calc(100% - 120px);
 .input {
     @include Input;
     min-width: $width;
-    box-sizing: border-box
+    box-sizing: border-box;
+    &Error::placeholder{
+        color: red
+    }
    
 }
 .button {

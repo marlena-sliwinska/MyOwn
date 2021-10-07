@@ -10,7 +10,10 @@ $margin-left: 45px;
     box-sizing: border-box;
     padding-top: 0.3em;
     padding-bottom: 0.3em;
-    margin-bottom: 0.5em
+    margin-bottom: 0.5em;
+    &Error::placeholder {
+        color: red
+    }
 }
 .button {
     @include ButtonList;
