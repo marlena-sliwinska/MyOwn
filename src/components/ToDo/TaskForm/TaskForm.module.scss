@@ -1,16 +1,20 @@
 @import './../../../utilities/mixins.scss';
-
+@import './../../../utilities/variables.scss';
+$width: calc(100% - 120px);
 .wrapper {
     margin-top: 2rem; 
 }
 
 .input {
     @include Input;
+    min-width: $width;
+    box-sizing: border-box
    
 }
 .button {
     @include ButtonTask;
     @include BasicBorderRadius; 
+    
 }
 .label {
 

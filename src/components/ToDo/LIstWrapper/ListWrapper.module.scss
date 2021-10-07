@@ -1,7 +1,7 @@
 .wrapper {
     overflow: auto;
     max-height: 65vh;
-    &::-webkit-scrollbar {
+   &::-webkit-scrollbar {
         width: 0.2em;
       }
     &::-webkit-scrollbar-track {
@@ -10,6 +10,9 @@
     &::-webkit-scrollbar-thumb {
         background-color: rgb(98, 112, 121);
         outline: 1px solid rgb(39, 45, 51);
+      }
+      &Deactive {
+          overflow: hidden;
       }
 }
 

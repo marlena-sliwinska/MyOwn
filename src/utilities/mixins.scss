@@ -13,10 +13,10 @@
     font-size: 18px;
     font-weight: 300;
     border-radius: 8px;
-    height: 36px;
+    min-height: 36px;
     background-color: $inputBackgroundColor;
     color: $inputTextColor;
-    width: 60vw;
+    /* min-width: 80vw; */
     padding-left: 16px;
     outline: none;
  
@@ -45,3 +45,5 @@
     border: none;
     
   }
+
+ 

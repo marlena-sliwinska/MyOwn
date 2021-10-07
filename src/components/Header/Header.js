@@ -17,7 +17,7 @@ function Header() {
                                 className={styles.link}
                                 activeClassName={styles.linkIsActive}
                                 exact
-                            >Strona Główna</NavLink>
+                            >Homepage</NavLink>
                         </li>
                         <li className={styles.item}>
                             <NavLink
@@ -37,7 +37,7 @@ function Header() {
                     </li> */}
                     </ul>
                 </nav>
-                <p className={styles.user}>Witaj {user.name}! </p>
+                <p className={styles.user}>Welcome {user.name}! </p>
             </div>
         </header>
     )

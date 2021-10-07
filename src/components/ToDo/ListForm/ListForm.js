@@ -5,11 +5,14 @@ import Portal from '../../Portal/Portal'
 import Task from '../Task/Task'
 import TaskForm from '../TaskForm/TaskForm'
 import styles from './ListForm.module.scss'
+import classNames from 'classnames/bind';
 
 function ListForm({ id = null, }) {
     const { lists, dispatch, setOpenedList, setCreateNewList } = useContext(StoreContext)
     const [title, setTitle] = useState('')
     const [tasks, setTasks] = useState([])
+
+
     const handleTitleChange = e => setTitle(e.target.value)
     const handleDeleteNote = e => {
         e.preventDefault()
@@ -42,20 +45,25 @@ function ListForm({ id = null, }) {
         }
     }
 
-    useEffect(() => {
 
-        findEditedList(id)
-        //dodaj clean up function
-    }, [id])
     const handleAddNewTask = (newTask) => {
         setTasks(prev => ([...prev, newTask]))
     }
     const handleRemoveOneTask = (taskId) => {
         setTasks(tasks.filter(task => task.id !== taskId))
     }
+    const handlechangeTaskStatus = (e, taskId) => {
+        setTasks(
+            () => (
+                tasks.map(task => {
+                    if (task.id === taskId) {
+                        task.isDone = e.target.checked
+                    }
+                    return task
+                })
+            ))
+    }
     const findEditedList = (id) => {
-
-        //dlaczego tu jest obiekt
         if (id === null) return
         let editedListIndex
         lists.forEach((list, index) => {
@@ -64,10 +72,33 @@ function ListForm({ id = null, }) {
         setTasks(lists[editedListIndex].tasks)
         setTitle(lists[editedListIndex].title)
     }
+    useEffect(() => {
+
+        findEditedList(id)
+        //dodaj clean up function
+    }, [id])
 
     const renderTasks = tasks.map(task => (
-        <Task key={task.id} {...task} deleteTask={handleRemoveOneTask} />
+        <Task
+            key={task.id}
+            {...task}
+            deleteTask={handleRemoveOneTask}
+            changeStatus={handlechangeTaskStatus} />
     ))
+
+    let cx = classNames.bind(styles);
+    let classNameSaveButton = cx({
+        button: true,
+        buttonSave: true
+    });
+    let classNameCancelButton = cx({
+        button: true,
+        buttonCancel: true
+    });
+    let classNameDeletelButton = cx({
+        button: true,
+        buttonDelete: true
+    });
     return (
         <Portal>
 
@@ -75,34 +106,39 @@ function ListForm({ id = null, }) {
                 onSubmit={handleSaveNote}
                 className={styles.wrapper}
             >
-                <label>
-                    <input
-                        className={styles.input}
-                        type="text"
-                        placeholder="title note"
-                        value={title}
-                        onChange={handleTitleChange} />
-                </label>
-                {renderTasks}
+                <p className={styles.title}>
+                    <label>
+                        <input
+                            className={styles.input}
+                            type="text"
+                            placeholder="title note"
+                            value={title}
+                            onChange={handleTitleChange} />
+                    </label>
+                </p>
+                <div className={styles.bar}></div>
+                <section className={styles.tasks}>
+                    {renderTasks}
+                </section>
                 <TaskForm add={handleAddNewTask} />
-
-                {id ? <button
-                    onClick={handleDeleteNote}
-                    className={styles.button}>
-                    Delete List
-                </button> : null}
-                <button
-                    onClick={handleCancelNote}
-                    className={styles.button}>
-                    Cancel
-                </button>
-                <button
-                    className={styles.button}
-                    type="submit">
-                    {id ? "Save changes" : "Save list"}
-                </button>
+                <div className={styles.buttonsContainer}>
+                    {id ? <button
+                        onClick={handleDeleteNote}
+                        className={classNameDeletelButton}>
+                        Delete List
+                    </button> : null}
+                    <button
+                        onClick={handleCancelNote}
+                        className={classNameCancelButton}>
+                        Cancel
+                    </button>
+                    <button
+                        className={classNameSaveButton}
+                        type="submit">
+                        {id ? "Save changes" : "Save list"}
+                    </button>
+                </div>
             </form>
-
         </Portal>
     )
 }

@@ -10,7 +10,8 @@ function ToDo() {
     // zastap to biblioteka classname
 
     return (
-        <div className={openedList || createNewList ? styles.contentDeactive : styles.content}>
+        <div
+            className={openedList || createNewList ? styles.contentDeactive : styles.content}>
             <h2
                 className={styles.header}
             >To Do</h2>

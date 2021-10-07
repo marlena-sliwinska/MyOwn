@@ -21,49 +21,18 @@ function StoreProvider({ children }) {
             id: 7878,
             tasks: [
                 { id: 55, content: "opświecać 30 minut dziennie na rozciąganie", isDone: false },
-                { id: 6969, content: "poczytać o pozycji w Anatomi jogi", isDone: false }
+                { id: 12, content: "poczytać o pozycji w Anatomi jogi", isDone: true },
             ]
         },
         {
             title: 'Zrobić obiad',
-            id: 45654654654621321,
+            id: 6657657612,
             tasks: [
                 { id: 456455, content: "kupic buraki", isDone: false },
                 { id: 6969, content: "upiec jabłka", isDone: false }
             ]
         },
-        {
-            title: 'Zrobić obiad',
-            id: 45654654654621321,
-            tasks: [
-                { id: 456455, content: "kupic buraki", isDone: false },
-                { id: 6969, content: "upiec jabłka", isDone: false }
-            ]
-        },
-        {
-            title: 'Zrobić obiad',
-            id: 45654654654621321,
-            tasks: [
-                { id: 456455, content: "kupic buraki", isDone: false },
-                { id: 6969, content: "upiec jabłka", isDone: false }
-            ]
-        },
-        {
-            title: 'Zrobić obiad',
-            id: 45654654654621321,
-            tasks: [
-                { id: 456455, content: "kupic buraki", isDone: false },
-                { id: 6969, content: "upiec jabłka", isDone: false }
-            ]
-        },
-        {
-            title: 'Zrobić obiad',
-            id: 45654654654621321,
-            tasks: [
-                { id: 456455, content: "kupic buraki", isDone: false },
-                { id: 6969, content: "upiec jabłka", isDone: false }
-            ]
-        },
+
     ])
     const [openedList, setOpenedList] = useState(null)
     const [createNewList, setCreateNewList] = useState(false)

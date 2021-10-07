@@ -10,5 +10,19 @@
     width: 1750px;
     max-width: 90vw;
     overflow: auto;
+    box-shadow: -1px 20px 40px 9px rgb(67, 103, 112);
+    &::-webkit-scrollbar {
+        width: 0.7em;
+      }
+    &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: rgb(98, 112, 121);
+        outline: 1px solid rgb(39, 45, 51);
+      }
+      &Deactive {
+          overflow: hidden;
+      }
 }
 
