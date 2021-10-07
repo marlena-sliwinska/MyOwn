@@ -13,12 +13,12 @@ function ListForm({ id = null, }) {
     const { lists, dispatch, setOpenedList, setCreateNewList } = useContext(StoreContext)
     const [title, setTitle] = useState('')
     const [tasks, setTasks] = useState([])
-    const [titleValidation, setTitleValidation] = useState(null)
+    const [titleValidation, setTitleValidation] = useState(true)
 
 
     const handleTitleChange = e => {
         setTitle(e.target.value)
-        setTitleValidation(false)
+        setTitleValidation(true)
     }
     const handleDeleteNote = e => {
         e.preventDefault()
@@ -50,7 +50,7 @@ function ListForm({ id = null, }) {
                 dispatch(addList(newList))
                 setCreateNewList(false)
             }
-        } else setTitleValidation(true)
+        } else setTitleValidation(false)
     }
 
 
@@ -110,7 +110,7 @@ function ListForm({ id = null, }) {
 
     let classNameInput = cx({
         input: true,
-        inputError: titleValidation,
+        inputError: !titleValidation,
     });
     return (
         <Portal>
@@ -126,8 +126,8 @@ function ListForm({ id = null, }) {
                             type="text"
                             value={title}
                             onChange={handleTitleChange}
-                            placeholder={titleValidation ?
-                                titleErrorMessage : "title note"}
+                            placeholder={titleValidation ? "title note" :
+                                titleErrorMessage}
 
                         />
                     </label>

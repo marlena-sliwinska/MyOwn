@@ -8,7 +8,17 @@ function StoreProvider({ children }) {
     const [user, setUser] = useState({
         name: '',
     })
-    const [lists, dispatch] = useReducer(listsReducers, [])
+    const [lists, dispatch] = useReducer(listsReducers, [
+        /*         {
+                    title: '',
+                    id: null,
+                    tasks: [
+                        { id: null, content: "", isDone: false },
+                    ],
+                    created: getCurrentDate(),
+                    updated: getCurrentDate(),
+                }, */
+    ])
     const [openedList, setOpenedList] = useState(null)
     const [createNewList, setCreateNewList] = useState(false)
 

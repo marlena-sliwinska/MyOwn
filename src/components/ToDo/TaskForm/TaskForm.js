@@ -6,10 +6,10 @@ import classNames from 'classnames/bind';
 
 function TaskForm({ content = "", add }) {
     const [taskInput, setTaskInput] = useState(content)
-    const [taskValidation, setTaskValidation] = useState(null)
+    const [taskValidation, setTaskValidation] = useState(true)
 
     const handleChange = e => {
-        setTaskValidation(false)
+        setTaskValidation(true)
         setTaskInput(e.target.value)
     }
 
@@ -24,21 +24,21 @@ function TaskForm({ content = "", add }) {
             add(newTask)
             setTaskInput("")
         } else {
-            setTaskValidation(true)
+            setTaskValidation(false)
         }
     }
 
     let cx = classNames.bind(styles);
     let classNameInput = cx({
         input: true,
-        inputError: taskValidation,
+        inputError: !taskValidation,
     });
     return (
         <>
             <article className={styles.wrapper}>
                 <label >
                     <input
-                        placeholder={taskValidation ? taskErrorMessage : "new task..."}
+                        placeholder={taskValidation ? "new task..." : taskErrorMessage}
                         type="text"
                         className={classNameInput}
                         value={taskInput}
