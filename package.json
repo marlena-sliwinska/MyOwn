@@ -24,7 +24,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://github.com/marlena-sliwinska/MyOwn.",
+  "homepage": "https://marlena-sliwinska.github.io/MyOwn./",
   "eslintConfig": {
     "extends": [
       "react-app",
